@@ -1,0 +1,28 @@
+# Image Folder Help
+
+This folder contains images used internally for documentation, presentations, and training materials.
+
+## Usage Guidelines
+
+- Store only relevant images for this training project.
+- Use descriptive filenames (e.g., `audio_lab_block_diagram.png`).
+- Reference images in documentation using relative paths, for example:
+  ```
+  ![Block Diagram](./.internal/images/audio_lab_block_diagram.png)
+  ```
+- Do not store confidential or sensitive information in images.
+
+## Recommended Formats
+
+- PNG for diagrams and screenshots
+- JPG for photographs
+- SVG for vector graphics
+
+## Organization
+
+- Group images by topic if needed (e.g., `audio_`, `sensor_`, `graphics_` prefixes).
+- Remove unused images to keep the folder clean.
+
+---
+
+_Last updated: October 13, 2025_
