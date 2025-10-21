@@ -1,0 +1,1 @@
+These folders contains template main.c file (files contain mandatory headers and empty main function, application logic should be filled)
