@@ -1,0 +1,11 @@
+# Microsoft Visio temporary files
+~$*.vsdx
+*.~vsdx
+
+# Microsoft Word temporary files
+~$*.docx
+*.~docx
+
+# Microsoft PowerPoint temporary files
+~$*.pptx
+*.~pptx
