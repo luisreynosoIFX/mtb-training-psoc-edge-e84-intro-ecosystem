@@ -168,10 +168,7 @@ int main(void)
 	
 
 	/* Initialize UART for use with retarget-io*/
-	
 
-	/*init retarget_io with uart*/
-	
    
     /* Enable CM55. */
     
