@@ -1,0 +1,139 @@
+/*******************************************************************************
+* File Name        : main.c
+*
+* Description      : This source file contains the main routine for non-secure
+*                    application in the CM33 CPU
+*
+* Related Document : See README.md
+*
+********************************************************************************
+* Copyright 2023-2025, Cypress Semiconductor Corporation (an Infineon company) or
+* an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
+*
+* This software, including source code, documentation and related
+* materials ("Software") is owned by Cypress Semiconductor Corporation
+* or one of its affiliates ("Cypress") and is protected by and subject to
+* worldwide patent protection (United States and foreign),
+* United States copyright laws and international treaty provisions.
+* Therefore, you may use this Software only as provided in the license
+* agreement accompanying the software package from which you
+* obtained this Software ("EULA").
+* If no EULA applies, Cypress hereby grants you a personal, non-exclusive,
+* non-transferable license to copy, modify, and compile the Software
+* source code solely for use in connection with Cypress's
+* integrated circuit products.  Any reproduction, modification, translation,
+* compilation, or representation of this Software except as specified
+* above is prohibited without the express written permission of Cypress.
+*
+* Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT, IMPLIED
+* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Cypress
+* reserves the right to make changes to the Software without notice. Cypress
+* does not assume any liability arising out of the application or use of the
+* Software or any product or circuit described in the Software. Cypress does
+* not authorize its products for use in any products where a malfunction or
+* failure of the Cypress product may reasonably be expected to result in
+* significant property damage, injury or death ("High Risk Product"). By
+* including Cypress's product in a High Risk Product, the manufacturer
+* of such system or application assumes all risk of such use and in doing
+* so agrees to indemnify Cypress against all liability.
+*******************************************************************************/
+
+/*******************************************************************************
+* Header Files
+*******************************************************************************/
+#include "cybsp.h"
+#include "ipc_def.h"
+//#include "retarget_io_init.h"
+
+/*******************************************************************************
+* Global variables
+*******************************************************************************/
+CY_SECTION_SHAREDMEM uint32_t sema_data[CY_IPC_SEMA_COUNT / CY_IPC_SEMA_PER_WORD];
+
+/*******************************************************************************
+* Macros
+*******************************************************************************/
+#define BLINKY_LED_DELAY_MSEC       (1000U)
+
+/* The timeout value in microseconds used to wait for CM55 core to be booted */
+#define CM55_BOOT_WAIT_TIME_USEC    (10U)
+
+/* App boot address for CM55 project */
+#define CM55_APP_BOOT_ADDR          (CYMEM_CM33_0_m55_nvm_START + \
+                                        CYBSP_MCUBOOT_HEADER_SIZE)
+
+
+/*******************************************************************************
+* Function Name: main
+********************************************************************************
+* Summary:
+* This is the main function of the CM33 non-secure application. 
+* 
+* It initializes the device and board peripherals. It also initializes the 
+* retarget-io middleware to be used with the debug UART port using which 
+* "Hello World!" is printed on the debug UART. The LED pin is initialized with
+* default configurations. The CM55 core is enabled and then the programs enters
+* an infinite while loop which toggles the LED1 with a frequency of 1 Hz.
+*
+* Parameters:
+*  none
+*
+* Return:
+*  int
+*
+*******************************************************************************/
+int main(void)
+{
+    cy_rslt_t result = CY_RSLT_SUCCESS;
+    cy_en_ipcsema_status_t ipc_status;
+
+    /* Initialize the device and board peripherals. */
+    result = cybsp_init();
+
+    /* Board initialization failed. Stop program execution. */
+    if (CY_RSLT_SUCCESS != result)
+    {
+        __disable_irq();    /* Disable all interrupts. */
+        CY_ASSERT(0);
+        while(true);        /* Infinite loop */
+    }
+
+    /* Enable global interrupts */
+    __enable_irq();
+
+    /****  retarget-io initialization and printf removed ****/
+   
+    ipc_status = Cy_IPC_Sema_Init(IPC_CHANNEL_NUM, CY_IPC_SEMA_COUNT, sema_data);
+
+    if (CY_IPC_SEMA_SUCCESS != ipc_status)
+    {
+        __disable_irq();    /* Disable all interrupts. */
+        CY_ASSERT(0);
+        while(true);        /* Infinite loop */
+    }
+
+    /* Enable CM55. */
+    /* CM55_APP_BOOT_ADDR must be updated if CM55 memory layout is changed.*/
+    Cy_SysEnableCM55(MXCM55, CM55_APP_BOOT_ADDR, CM55_BOOT_WAIT_TIME_USEC);
+
+    Cy_SysLib_Delay(SEMA_DELAY);
+
+    for(;;)
+    {
+        if (Cy_GPIO_Read(TRAINING_BUTTON_PORT, TRAINING_BUTTON_PIN) == 0)
+        {
+            /* Acquire semaphore */
+            while (Cy_IPC_Sema_Set(MY_SEMA_NUM, false) != CY_IPC_SEMA_SUCCESS)
+                ;
+            Cy_SCB_UART_PutString(CYBSP_DEBUG_UART_HW, "Message sent from CM33 \r\n");
+            while(!(Cy_SCB_UART_IsTxComplete(CYBSP_DEBUG_UART_HW))) {}
+            /* Release semaphore */
+            while (Cy_IPC_Sema_Clear(MY_SEMA_NUM, false) != CY_IPC_SEMA_SUCCESS)
+                ;
+            
+        }
+    }
+}
+
+/* [] END OF FILE */
