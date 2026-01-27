@@ -2,9 +2,14 @@
 
 This session covers everything you need to begin developing with PSOC Edge E84, including hardware and software tools, as well as development resources. You will get an opportunity to explore key ModusToolbox features through hands-on lab exercises, and you will learn to build your first application from scratch. 
 
-
 ## Device family
 - [PSOC™ Edge](https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm)
+
+## How to use this training?
+1. Download the training [content](#content).
+2. Watch the video or review the presentation at your own pace.
+3. Follow the step-by-step instructions in the training manual during the hands-on sections.
+4. Use the provided source files if needed to verify the solution. 
 
 ## Training level
 - E2: Intermediate
@@ -45,12 +50,6 @@ This session covers everything you need to begin developing with PSOC Edge E84, 
 - [Training manual](./Manual/PSE84_Introductory_Ecosystem_E2_Training_manual.pdf)
 - [Solution to labs](./Lab_Source/)
 
-## How to use this training?
-1. Download the training [content](#content).
-2. Watch the video or review the presentation at your own pace.
-3. Follow the step-by-step instructions in the training manual during the hands-on sections.
-4. Use the provided source files if needed to verify the solution. 
-
 ## References and resources
 
 - [PSOC™ Edge MCUs](https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm)
@@ -61,4 +60,4 @@ This session covers everything you need to begin developing with PSOC Edge E84, 
 ## History 
 | Date       | Version   | Description                       |
 |------------|-----------|-----------------------------------|
-| 12/12/2025 | ** | First public release             |
+| 01/27/2026 | ** | First public release             |
