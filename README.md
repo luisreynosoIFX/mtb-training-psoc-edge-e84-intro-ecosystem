@@ -1,6 +1,6 @@
-# PSOC™ Edge E2 Training - Getting Started with the Development Ecosystem for PSOC™ Edge E84
+# PSOC™ Edge E2 Training - Getting started with the development ecosystem for PSOC™ Edge E84
 
-This session covers everything you need to begin developing with PSOC Edge E84, including hardware and software tools, as well as development resources. You will get an opportunity to explore key ModusToolbox features through hands-on lab exercises, and you will learn to build your first application from scratch. 
+This session covers everything you need to begin developing with PSOC™ Edge E84, including hardware and software tools, as well as development resources. You will get an opportunity to explore key ModusToolbox™ features through hands-on lab exercises, and you will learn to build your first application from scratch. 
 
 ## Device family
 - [PSOC™ Edge](https://www.infineon.com/products/microcontroller/32-bit-psoc-arm-cortex/32-bit-psoc-edge-arm)
@@ -45,7 +45,7 @@ This session covers everything you need to begin developing with PSOC Edge E84, 
 - Learn about IPC and how to use it to synchronize resources between CPUs.
 
 ## Content
-- [Training video at Infineon Academy](https://infineon-academy.csod.com/ui/lms-learning-details/app/video/c7f4f0fc-a976-4c1a-9a19-4c6c41c6238b)
+- [Training video at Infineon Academy](https://infineon-academy.csod.com/samldefault.aspx?ouid=1&returnURL=%252fDeepLink%252fProcessRedirect.aspx%253fmodule%253dlodetails%2526lo%253dC7F4F0FC-A976-4C1A-9A19-4C6C41C6238B)
 - [Presentation](./Presentation/PSE84_Introductory_Ecosystem_E2.pdf)
 - [Training manual](./Manual/PSE84_Introductory_Ecosystem_E2_Training_manual.pdf)
 - [Solution to labs](./Lab_Source/)
