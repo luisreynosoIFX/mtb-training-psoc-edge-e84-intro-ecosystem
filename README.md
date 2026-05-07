@@ -16,9 +16,9 @@ This session covers everything you need to begin developing with PSOC™ Edge E8
 
 ## Pre-requisites 
 ### Recommended trainings
-- This is an introductory training and explains how to get started with PSOC™ Edge using ModusToolbox™; however, however, it's not intended to cover all basic concepts for PSOC™ Edge and ModusToolbox™.
+- This is an introductory training and explains how to get started with PSOC™ Edge using ModusToolbox™; however, it's not intended to cover all basic concepts for PSOC™ Edge and ModusToolbox™.
   - For an introduction to PSOC™ MCUs, including getting started guides to ModusToolbox™, go to the [PSOC™ Developer Journey](https://www.infineon.com/PSOCdeveloper).
-  - For PSOC™ Edge trainings, from begginer tutorials to advanced trainings, please visit the [PSOC™ Edge E84 Training Collection](https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd).
+  - For PSOC™ Edge trainings, from beginner tutorials to advanced trainings, please visit the [PSOC™ Edge E84 Training Collection](https://infineon-academy.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=8f04565f-88f4-4ca7-83b3-22e501656fbd).
 
 
 ### Tools (see [training manual](#content) for versions and installation instructions)
@@ -40,7 +40,7 @@ This session covers everything you need to begin developing with PSOC™ Edge E8
 
 ## Expected outcome
 - Understand the development ecosystem for PSOC™ Edge. 
-- Get started with an initial project using PSOC­™ Edge and ModusToolbox™.
+- Get started with an initial project using PSOC™ Edge and ModusToolbox™.
 - Get familiar with key features of ModusToolbox™.
 - Learn about IPC and how to use it to synchronize resources between CPUs.
 
@@ -60,4 +60,5 @@ This session covers everything you need to begin developing with PSOC™ Edge E8
 ## History 
 | Date       | Version   | Description                       |
 |------------|-----------|-----------------------------------|
+| 05/07/2026 | *A | Presentation format updated             |
 | 01/27/2026 | ** | First public release             |
