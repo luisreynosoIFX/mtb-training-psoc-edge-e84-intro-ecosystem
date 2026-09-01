@@ -14,7 +14,7 @@ This session covers everything you need to begin developing with PSOC™ Edge E8
 ## Training level
 - E2: Intermediate
 
-## Pre-requisites 
+## Prerequisites
 ### Recommended trainings
 - This is an introductory training and explains how to get started with PSOC™ Edge using ModusToolbox™; however, it's not intended to cover all basic concepts for PSOC™ Edge and ModusToolbox™.
   - For an introduction to PSOC™ MCUs, including getting started guides to ModusToolbox™, go to the [PSOC™ Developer Journey](https://www.infineon.com/PSOCdeveloper).
@@ -22,16 +22,17 @@ This session covers everything you need to begin developing with PSOC™ Edge E8
 
 
 ### Tools (see [training manual](#content) for versions and installation instructions)
-- [ModusToolbox™ with Eclipse IDE](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup)
-- [Edge Protect Security Suite](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup)
-- [ModusToolbox™ Programming tools](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup)
-- Terminal emulator
+- ModusToolbox™ software v3.9 or later, installed through the [ModusToolbox™ Setup tool](https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup)
+- Visual Studio Code with the **Infineon ModusToolbox™ for VS Code** extension v1.10.0 or later
+- Edge Protect Security Suite v2.2.0 or later, installed through the ModusToolbox™ Setup tool
+- ModusToolbox™ Programming Tools v1.9.0 or later, installed through the ModusToolbox™ Setup tool
+- Terminal emulator such as Tera Term or PuTTY
 
 ## Hardware
 - [KIT_PSE84_EVAL](https://www.infineon.com/evaluation-board/KIT-PSE84-EVAL)
 
 ## Duration
-- 1-2hrs, including video and hands-on labs.
+- 1-2 hours, including the video and hands-on labs.
 
 ## Agenda
 1. Development ecosystem for PSOC™ Edge E84
@@ -47,7 +48,7 @@ This session covers everything you need to begin developing with PSOC™ Edge E8
 ## Content
 - [Training video at Infineon Academy](https://infineon-academy.csod.com/samldefault.aspx?ouid=1&returnURL=%252fDeepLink%252fProcessRedirect.aspx%253fmodule%253dlodetails%2526lo%253dC7F4F0FC-A976-4C1A-9A19-4C6C41C6238B)
 - [Presentation](./Presentation/PSE84_Introductory_Ecosystem_E2.pdf)
-- [Training manual](./Manual/PSE84_Introductory_Ecosystem_E2_Training_manual.pdf)
+- [Training manual document](./Manual/pse84-introductory-ecosystem-e2-training-manual.md)
 - [Solution to labs](./Lab_Source/)
 
 ## References and resources
@@ -60,5 +61,6 @@ This session covers everything you need to begin developing with PSOC™ Edge E8
 ## History 
 | Date       | Version   | Description                       |
 |------------|-----------|-----------------------------------|
+| 09/18/2026 | *B | Update tool versions and use Visual Studio Code  |
 | 05/07/2026 | *A | Presentation format updated             |
 | 01/27/2026 | ** | First public release             |

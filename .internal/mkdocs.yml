@@ -1,0 +1,59 @@
+site_name: "PSOC™ Edge Training - Getting started with the development ecosystem for PSOC™ Edge E84"
+site_description: >
+  Hands-on training for getting started with the PSOC™ Edge E84 development
+  ecosystem, ModusToolbox™, Hello World, and IPC semaphore applications.
+site_author: Infineon Technologies AG
+repo_name: Infineon/mtb-training-psoc-edge-e84-intro-ecosystem
+repo_url: https://github.com/Infineon/mtb-training-psoc-edge-e84-intro-ecosystem
+
+docs_dir: Manual
+site_dir: ../docs
+use_directory_urls: false
+
+theme:
+  name: material
+  logo: assets/images/infineon_logo.png
+  favicon: assets/images/favicon.png
+  palette:
+    - scheme: default
+      primary: teal
+      accent: teal
+  features:
+    - navigation.top
+    - navigation.footer
+    - navigation.expand
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+plugins:
+  - search
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Lab Manual: pse84-introductory-ecosystem-e2-training-manual.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  - tables
+  - sane_lists
+  - toc:
+      permalink: true
+      title: On this page
+      toc_depth: 2

@@ -1,0 +1,200 @@
+{
+  "main": {
+    "id": "007ba06a48564564",
+    "type": "split",
+    "children": [
+      {
+        "id": "1c9cda7238bfcc34",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1e45debe70a1bd89",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "pse84-introductory-ecosystem-e2-training-manual.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "pse84-introductory-ecosystem-e2-training-manual"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f1567e0adb5d9ac3",
+    "type": "split",
+    "children": [
+      {
+        "id": "aff9e5e2fdeb19aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5eba8ae8632e16db",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a1c04ffe0304687d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "e6a108509e353f3f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6f223bb5c5a06e62",
+    "type": "split",
+    "children": [
+      {
+        "id": "6ae93d7f693a82d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c776256ce4e10eb5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "pse84-introductory-ecosystem-e2-training-manual.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "1fd220dcae99f445",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "pse84-introductory-ecosystem-e2-training-manual.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "fedca2f06faba0c8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9a217028c3d9df11",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "a8d1d7ca007bfe47",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "pse84-introductory-ecosystem-e2-training-manual.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "1e45debe70a1bd89",
+  "lastOpenFiles": [
+    "assets/images/VSC_open2.png",
+    "assets/images/VSC_open1.png",
+    "assets/images/MTB_ProjectCreator_2.png",
+    "assets/images/MTB_ProjectCreator_1.png",
+    "assets/images/MTB_Dashboard.png",
+    "assets/images/image_a1002.png"
+  ]
+}

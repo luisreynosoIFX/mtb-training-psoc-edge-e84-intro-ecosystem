@@ -1,0 +1,1440 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on training for getting started with the PSOC™ Edge E84 development ecosystem, ModusToolbox™, Hello World, and IPC semaphore applications.
+">
+      
+      
+        <meta name="author" content="Infineon Technologies AG">
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lab Manual - PSOC™ Edge Training - Getting started with the development ecosystem for PSOC™ Edge E84</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started-with-the-development-ecosystem-for-psoctm-edge-e84-training-manual" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="PSOC™ Edge Training - Getting started with the development ecosystem for PSOC™ Edge E84" class="md-header__button md-logo" aria-label="PSOC™ Edge Training - Getting started with the development ecosystem for PSOC™ Edge E84" data-md-component="logo">
+      
+  <img src="assets/images/infineon_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PSOC™ Edge Training - Getting started with the development ecosystem for PSOC™ Edge E84
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Infineon/mtb-training-psoc-edge-e84-intro-ecosystem" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Infineon/mtb-training-psoc-edge-e84-intro-ecosystem
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="PSOC™ Edge Training - Getting started with the development ecosystem for PSOC™ Edge E84" class="md-nav__button md-logo" aria-label="PSOC™ Edge Training - Getting started with the development ecosystem for PSOC™ Edge E84" data-md-component="logo">
+      
+  <img src="assets/images/infineon_logo.png" alt="logo">
+
+    </a>
+    PSOC™ Edge Training - Getting started with the development ecosystem for PSOC™ Edge E84
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Infineon/mtb-training-psoc-edge-e84-intro-ecosystem" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Infineon/mtb-training-psoc-edge-e84-intro-ecosystem
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Manual
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="pse84-introductory-ecosystem-e2-training-manual.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-this-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About this document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intended-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intended audience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-development-tools-and-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required development tools and prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-hello-world-blinky" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 1: Hello world + Blinky
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-ipc-semaphore-using-pdl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab 2: IPC semaphore using PDL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-kit_pse84_eval-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix B: KIT_PSE84_EVAL details
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revision-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revision history
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="getting-started-with-the-development-ecosystem-for-psoctm-edge-e84-training-manual">Getting started with the development ecosystem for PSOC&trade; Edge E84 training manual<a class="headerlink" href="#getting-started-with-the-development-ecosystem-for-psoctm-edge-e84-training-manual" title="Permanent link">&para;</a></h1>
+<h2 id="about-this-document">About this document<a class="headerlink" href="#about-this-document" title="Permanent link">&para;</a></h2>
+<p>This training manual provides a comprehensive guide to getting started with the PSOC&trade; Edge E84 MCU, including detailed instructions on creating, configuring, building, and running application code examples using ModusToolbox&trade;.</p>
+<h2 id="scope-and-purpose">Scope and purpose<a class="headerlink" href="#scope-and-purpose" title="Permanent link">&para;</a></h2>
+<p>In this training, you will learn how to:</p>
+<ol>
+<li>Explore the development ecosystem for PSOC&trade; Edge E84, including its software and hardware tools</li>
+<li>Create, build, and program your first PSOC&trade; Edge application using ModusToolbox&trade;</li>
+<li>Configure and rename pins using the Device Configurator</li>
+<li>Use the inter-processor communication (IPC) PDL driver to synchronize access to a shared resource between the CM33 and CM55 cores</li>
+</ol>
+<h2 id="intended-audience">Intended audience<a class="headerlink" href="#intended-audience" title="Permanent link">&para;</a></h2>
+<p>This manual is intended for embedded developers, application engineers, and technical users who are new to PSOC&trade; Edge and ModusToolbox&trade;.</p>
+<h3 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#about-this-document">About this document</a></li>
+<li><a href="#scope-and-purpose">Scope and purpose</a></li>
+<li><a href="#intended-audience">Intended audience</a></li>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#required-development-tools-and-prerequisites">Required development tools and prerequisites</a></li>
+<li><a href="#lab-1-hello-world-blinky">Lab 1: Hello world + Blinky</a></li>
+<li><a href="#lab-2-ipc-semaphore-using-pdl">Lab 2: IPC semaphore using PDL</a></li>
+<li><a href="#appendix-a">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;</a></li>
+<li><a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a></li>
+<li><a href="#revision-history">Revision history</a></li>
+<li><a href="#disclaimer">Disclaimer</a></li>
+</ul>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>PSOC&trade; Edge E84 series of Arm® Cortex®-M MCUs feature high-performance, low-power, secured MCUs with advanced machine learning (ML) acceleration for next-generation AI/ML applications.</p>
+<p>The PSOC&trade; Edge E84 MCUs are based on Arm® Cortex®-M55, with Helium DSP support paired with Ethos-U55 NPU as well as a low-power Cortex®-M33 paired with Infineon’s ultra-low power NNLite hardware accelerator and advanced HMI interfaces, including graphics.</p>
+<p>This introductory course to the PSOC&trade; Edge development ecosystem delivers a thorough overview of its software and hardware tools, with detailed, step-by-step guidance to help you quickly build your first application.</p>
+<h2 id="required-development-tools-and-prerequisites">Required development tools and prerequisites<a class="headerlink" href="#required-development-tools-and-prerequisites" title="Permanent link">&para;</a></h2>
+<h3 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h3>
+<h4 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://www.infineon.com/evaluation-board/KIT-PSE84-EVAL">PSOC&trade; Edge E84 Evaluation Kit</a> (KIT_PSE84_EVAL)</li>
+<li>Ensure BOOT SW (SW6) should be in 'High'/ON position</li>
+<li>Ensure J20 and J21 should be in the Tristate/Not-Connected (NC) position</li>
+<li>See <a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a> for more details</li>
+</ul>
+<h4 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ModusToolbox&trade; software v3.9 or later<ul>
+<li>Recommended installation via the <a href="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup">ModusToolbox&trade; Setup tool</a></li>
+</ul>
+</li>
+<li>Visual Studio Code with the <strong>Infineon ModusToolbox&trade; for VS Code</strong> extension v1.10.0 or later<ul>
+<li>Install <a href="https://code.visualstudio.com/">Visual Studio Code</a>, then install the extension from the VS Code Marketplace. The extension can also install the ModusToolbox&trade; software for you if it is not already present</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Command-line (CLI) instructions are also provided in <a href="#appendix-a">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;</a>.</p>
+</blockquote>
+<ul>
+<li>Edge Protect Security Suite v2.2.0 or later<ul>
+<li>Installed by the ModusToolbox&trade; Setup tool as a dependency to ModusToolbox&trade; v3.9</li>
+</ul>
+</li>
+<li>ModusToolbox&trade; Programming Tools v1.9.0 or later<ul>
+<li>Installed by the ModusToolbox&trade; Setup tool as a dependency to ModusToolbox&trade; v3.9</li>
+</ul>
+</li>
+<li>Board support package (BSP)<ul>
+<li>KIT_PSE84_EVAL_EPC2 v1.4.0 or later, available with ModusToolbox&trade; v3.9</li>
+</ul>
+</li>
+<li>Serial terminal emulator<ul>
+<li>Use Tera Term, PuTTY, or a similar terminal emulator</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Different versions of tools and evaluation kits are expected to work with minor or no changes.</p>
+</blockquote>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Install the software and obtain the hardware listed above.</li>
+<li>This is an introductory training to PSOC&trade; Edge and ModusToolbox&trade;; however, it is not intended to cover all basic concepts<ul>
+<li>For an introduction to PSOC&trade;, including a getting started guide to ModusToolbox&trade;, visit <a href="https://www.infineon.com/product-information/psocdeveloper">https://www.infineon.com/product-information/psocdeveloper</a>.</li>
+<li>For PSOC&trade; Edge trainings, from beginner tutorials to advanced trainings, go to <a href="https://infineon-academy.csod.com/samldefault.aspx?ouid=1&amp;returnURL=%252fDeepLink%252fProcessRedirect.aspx%253fmodule%253dphnxdriver%2526routename%253dAdmin%252fPlayerPageRedirectHandler%2526Route%253d%25252flms-learner-playlist%25252fPlaylistDetails%2526Parameters%253dplaylistId%25253d8f04565f-88f4-4ca7-83b3-22e501656fbd">PSOC&trade; Edge Training Collection</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="lab-1-hello-world-blinky">Lab 1: Hello world + Blinky<a class="headerlink" href="#lab-1-hello-world-blinky" title="Permanent link">&para;</a></h2>
+<h3 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h3>
+<p>This code example shows how to implement simple UART communication by printing a <strong>Hello world</strong> message on a terminal. It also blinks an LED using a timer resource in the PSOC&trade; Edge E84 MCU. The code example uses the Peripheral Driver Library (PDL) and Device Configurator included in ModusToolbox&trade;.</p>
+<h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
+<p>This code example demonstrates the following algorithm flow:</p>
+<ul>
+<li><strong>Step 1</strong>: Initialize peripherals such as UART and GPIO</li>
+<li><strong>Step 2</strong>: Print "Hello World" on the serial terminal using UART</li>
+<li><strong>Step 3</strong>: Blink the LED through the GPIO</li>
+</ul>
+<h3 id="flow-chart">Flow chart<a class="headerlink" href="#flow-chart" title="Permanent link">&para;</a></h3>
+<p>The flow of the <strong>PSOC&trade; Edge MCU: Hello world</strong> project is as follows:</p>
+<p><img src="assets/images/image_001.png" alt="Hello world project flow chart" style="width:500px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="hardware-diagram">Hardware diagram<a class="headerlink" href="#hardware-diagram" title="Permanent link">&para;</a></h3>
+<p>Below is the hardware block diagram for this example:</p>
+<ul>
+<li>UART pins:<ul>
+<li>P6_7 (UART_TX)</li>
+<li>P6_5 (UART_RX)</li>
+</ul>
+</li>
+<li>GPIO LED pin:<ul>
+<li>P16_7 (LED)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> This example requires BOOT SW in the ON position.</p>
+</blockquote>
+<p>See <a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL</a> for more details.</p>
+<p><img src="assets/images/image_002.png" alt="Hello world hardware block diagram" style="width:680px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="project-creation">Project creation<a class="headerlink" href="#project-creation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Follow the steps in <a href="#appendix-a">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;</a> to create a new application</p>
+</li>
+<li>
+<p>When creating the application, select the <strong>PSOC&trade; Edge Hello World</strong> application under the <strong>Getting Started</strong> section
+<img src="assets/images/image_003.png" alt="Project Creator Hello World template selection" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Build and program the application. In the ModusToolbox&trade; Assistant <strong>Application</strong> tab, click <strong>Program</strong> (this also builds the project).</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Make sure the top-level application, not an individual project, is selected to ensure all three projects (<code>cm33_s</code>, <code>cm33_ns</code>, and <code>cm55</code>) are built and programmed together. If you select an individual project instead, ModusToolbox&trade; builds and programs only that project.
+<img src="assets/images/image_004.png" alt="Program the application from the Application tab" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</blockquote>
+<h3 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<p>After the program runs successfully, open the serial terminal and configure the baud rate to 115200-8-N-1. Then press the kit reset button. A message is printed as shown below, and the kit LED blinks at approximately 1 Hz.
+<img src="assets/images/image_005.png" alt="Hello world message on the serial terminal" style="width:530px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="configure-and-rename-a-pin-using-the-device-configurator">Configure and rename a pin using the Device Configurator<a class="headerlink" href="#configure-and-rename-a-pin-using-the-device-configurator" title="Permanent link">&para;</a></h3>
+<p>The Device Configurator provides a graphical view of device peripherals, and it generates macros, data structures, and initialization functions based on your selections. The BSP function <code>cybsp_init()</code> calls the generated functions to set up the clocks, pins, and internal routing. It is typically called from the <code>main()</code> function before using on-chip peripherals such as serial blocks and timer/counters.</p>
+<p>When you launch the Device Configurator from VS Code, you are opening the project's <code>design.modus</code> file, which holds all the BSP configuration information. It contains the following:</p>
+<ul>
+<li>Selected device</li>
+<li>Resource parameters</li>
+<li>Constraints</li>
+</ul>
+<p>Next, configure or rename the pins using the <strong>Device Configurator</strong>.</p>
+<ol>
+<li>
+<p>Open the <strong>Device Configurator</strong> tool by clicking <strong>Configure Device</strong> from the <strong>Application</strong> tab of the ModusToolbox&trade; Assistant
+<img src="assets/images/image_006.png" alt="Launching the Device Configurator" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>[INFO] The Device Configurator includes the following tabs:</p>
+</li>
+</ol>
+<ul>
+<li><strong>Peripherals</strong>: configures peripherals, including communication, digital, and system</li>
+<li><strong>Analog</strong>: configures analog modules, including the autonomous analog (ADC, PTComps, autonomous controller, CTBs, and PRB) and the low-power comparators</li>
+<li><strong>Pins</strong>: configures the GPIOs, including Smart I/O functionality</li>
+<li><strong>Clocks</strong>: configures the device clock tree, including all clock inputs and outputs</li>
+<li><strong>System</strong>: configures security, protection, and system settings such as debug and power modes</li>
+<li><strong>Memory</strong>: configures the memory allocation and provides a graphical view of the memory map</li>
+<li><strong>DMA</strong>: configures the device's DMAs</li>
+</ul>
+<p>You can navigate through the different tabs. The Device Configurator generates code only when the <code>design.modus</code> file is saved.</p>
+<ol start="3">
+<li>
+<p>In the Device Configurator, go to the <strong>Pins</strong> tab
+<img src="assets/images/image_007.png" alt="Pins tab in the Device Configurator" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>[INFO] On this development kit, the three user LEDs are connected to Port 16, pins 5, 6, and 7, as per the kit schematic</p>
+</li>
+</ol>
+<p><img src="assets/images/image_008.png" alt="User LEDs on Port 16" style="width:476px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<p>Each pin can be uniquely identified by giving it a name of your choice. These names are known as <em>aliases</em>. In the code, aliases can be used to refer to pins instead of explicit pin numbers.
+<img src="assets/images/image_009.png" alt="Pin alias field in the Device Configurator" style="width:396px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="5">
+<li>Rename <strong>Port 16[7]</strong> as <code>TRAINING_LED</code>. This LED is used later in the application
+<img src="assets/images/image_010.png" alt="Renaming Port 16[7] to TRAINING_LED" style="width:394px; max-width:100%; height:auto; display:block; margin:0 auto;" /></li>
+<li>Select <strong>File → Save</strong> or press <strong>Ctrl+S</strong> to save the change and regenerate the source files</li>
+<li>
+<p>[INFO] Changes made in the Device Configurator take effect once you save the file. Open the <code>cycfg_pins.h</code> file (located at <code>&lt;application-directory&gt;\bsps\TARGET_APP_KIT_PSE84_EVAL_EPC2\config\GeneratedSource\cycfg_pins.h</code>) to observe the pin definitions and aliases. The change is reflected in the file as follows:
+<img src="assets/images/image_011.png" alt="TRAINING_LED alias in cycfg_pins.h" style="width:544px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>[INFO] The Device Configurator includes links to documentation. Click the link in the <strong>Parameters</strong> window to open and navigate through the GPIO documentation. The documentation is also available in the <a href="https://infineon.github.io/mtb-dsl-pse8xxgp/html/group__group__gpio.html">PSOC&trade; E8XXGP Device Support Library</a>
+<img src="assets/images/image_012.png" alt="Documentation link in the Parameters window" style="width:455px; max-width:100%; height:auto; display:block; margin:0 auto;" />
+<img src="assets/images/image_013.png" alt="GPIO documentation for the Device Support Library" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>[INFO] In the <strong>EXPLORER</strong> view, observe three folders named <code>PSOC_Edge_Hello_World.proj_cm33_ns</code>, <code>PSOC_Edge_Hello_World.proj_cm33_s</code>, and <code>PSOC_Edge_Hello_World.proj_cm55</code>. Each folder contains a <code>main.c</code> file that holds the application code for the corresponding project</p>
+</li>
+<li>
+<p>Open the <code>main.c</code> file under <code>PSOC_Edge_Hello_World.proj_cm33_ns</code>. Inside the infinite <code>for</code> loop, change the <code>CYBSP_USER_LED1_PORT</code> macro to <code>TRAINING_LED_PORT</code> and <code>CYBSP_USER_LED1_PIN</code> to <code>TRAINING_LED_PIN</code>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Cy_GPIO_Inv</span><span class="p">(</span><span class="n">TRAINING_LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">TRAINING_LED_PIN</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Cy_SysLib_Delay</span><span class="p">(</span><span class="n">BLINKY_LED_DELAY_MSEC</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Save</strong> the file. The application code for <code>proj_cm33_ns</code> is now complete</p>
+</li>
+<li>
+<p><strong>Rebuild and reprogram</strong> the application</p>
+</li>
+<li>
+<p>After the program runs successfully, open the serial terminal and configure the baud rate to 115200-8-N-1. Then reset the kit. The same application runs, and the kit LED continues blinking at approximately 1 Hz</p>
+</li>
+</ol>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>In this lab, you created your first PSOC&trade; Edge E84 MCU application using ModusToolbox&trade;, modified code using PDL libraries, printed a message in a terminal, and blinked an LED.</p>
+<p>This confirms that the device, EVK, and tools are functional.</p>
+<h2 id="lab-2-ipc-semaphore-using-pdl">Lab 2: IPC semaphore using PDL<a class="headerlink" href="#lab-2-ipc-semaphore-using-pdl" title="Permanent link">&para;</a></h2>
+<h3 id="objective_1">Objective<a class="headerlink" href="#objective_1" title="Permanent link">&para;</a></h3>
+<p>This lab exercise demonstrates how to use the inter-processor communication (IPC) PDL driver to implement a simple semaphore scheme with PSOC&trade; Edge. A semaphore is used to manage access to a common resource, such as a UART, between the CPUs.</p>
+<p>This guide utilizes the Hello World example to show the step-by-step process to add IPC semaphores and shows features like the Library Manager and software documentation; however, ModusToolbox&trade; includes the <a href="https://github.com/Infineon/mtb-example-psoc-edge-ipc-sema">mtb-example-psoc-edge-ipc-sema</a> code example, which showcases this functionality in a ready-to-use project.</p>
+<h3 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h3>
+<p>A shared IPC semaphore is used to coordinate access to a common resource between the two CPUs. In this example, the resource is the UART: each CPU prints a message to the computer terminal over the UART whenever the user button is pressed. Before printing, both CPUs try to acquire the semaphore. If successful, the CPU prints the message and then releases the semaphore. If the semaphore is already held, it keeps trying until it can acquire it.</p>
+<p>Without the semaphore to synchronize access to the UART, messages from both CPUs overlap. The following flow chart shows how the code operates.</p>
+<h3 id="flow-chart_1">Flow chart<a class="headerlink" href="#flow-chart_1" title="Permanent link">&para;</a></h3>
+<p><img src="assets/images/image_014.png" alt="IPC semaphore project flow chart" style="width:550px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="hardware-diagram_1">Hardware diagram<a class="headerlink" href="#hardware-diagram_1" title="Permanent link">&para;</a></h3>
+<p>Below is the hardware block diagram for this example:</p>
+<ul>
+<li>UART pins:<ul>
+<li>P6_7 (UART_TX)</li>
+<li>P6_5 (UART_RX)</li>
+</ul>
+</li>
+<li>GPIO LED pin:<ul>
+<li>P16_7 (LED)</li>
+</ul>
+</li>
+<li>Button pin:<ul>
+<li>P8_3 (USER_BTN1)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> This example requires BOOT SW in the ON position.</p>
+</blockquote>
+<p>See <a href="#appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details</a> for more details.</p>
+<p><img src="assets/images/image_015.png" alt="IPC semaphore hardware block diagram" style="width:680px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="project-creation_1">Project creation<a class="headerlink" href="#project-creation_1" title="Permanent link">&para;</a></h3>
+<p>This lab utilizes the same hello world example from Lab 1: Hello world + Blinky. Alternatively, create a new Hello World example and name it differently.</p>
+<h3 id="enabling-retarget-io-on-cm55">Enabling retarget-io on CM55<a class="headerlink" href="#enabling-retarget-io-on-cm55" title="Permanent link">&para;</a></h3>
+<p>The Hello World example uses the <code>retarget-io</code> library to print debug information from the CM33 project using UART. This section shows how to use the <strong>Library Manager</strong> to do the same on the CM55 core.</p>
+<ol>
+<li>
+<p>Open the <strong>Library Manager</strong> by clicking the <strong>Configure Middleware</strong> button in the <strong>Application</strong> tab of the ModusToolbox&trade; Assistant, or run <code>make library-manager</code> from a terminal. The Library Manager provides a GUI to select which Board Support Package (BSP) is used when building a ModusToolbox&trade; application. The tool collects a list of available and currently selected BSPs and libraries, along with the necessary metadata from a web service. You can add and remove BSPs and libraries, as well as change their versions
+<img src="assets/images/image_016.png" alt="Library Manager in ModusToolbox" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>[INFO] Observe that the project already includes multiple libraries for the CM33 secure, CM33 non-secure, and CM55 projects. Libraries worth highlighting for this example are:</p>
+</li>
+</ol>
+<ul>
+<li><a href="https://infineon.github.io/mtb-dsl-pse8xxgp/html/index.html">mtb-dsl-pse8xxgp</a>: provides all necessary device-specific components used during software development for the PSE8xxGP family of devices, including HAL and PDL drivers. <code>mtb-dsl-pse8xxgp</code> is included for all PSOC&trade; Edge examples in ModusToolbox&trade;.</li>
+<li><a href="https://infineon.github.io/mtb-ipc/html/index.html">mtb-ipc</a>: allows communication between multiple CPUs or between multiple tasks operating in different domains within a single CPU. This lab requires <code>mtb-ipc</code> on <code>proj_cm33_ns</code> and <code>proj_cm55</code> because the two cores communicate with each other. Observe that the library is enabled for both projects.</li>
+<li><a href="https://infineon.github.io/retarget-io/html/index.html">retarget-io</a>: retargets the standard input/output (STDIO) messages to a UART port. <code>retarget-io</code> is enabled for <code>proj_cm33_ns</code> and not for <code>proj_cm55</code>. This library is not required for IPC semaphores; however, this section shows how to move it to use <code>printf</code> in <code>proj_cm55</code>.</li>
+</ul>
+<ol start="3">
+<li>In <code>proj_cm33_ns</code>, click the cross icon to remove <code>retarget-io</code>, because it is not used on the CM33
+<img src="assets/images/image_017.png" alt="Removing retarget-io from proj_cm33_ns" style="width:559px; max-width:100%; height:auto; display:block; margin:0 auto;" /></li>
+<li>
+<p>Click <strong>Add Library</strong>
+<img src="assets/images/image_018.png" alt="Add Library button in the Library Manager" style="width:554px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Select <code>proj_cm55</code> as the <strong>Target Project</strong>, enable the <code>retarget-io</code> library by selecting its checkbox, and then click <strong>OK</strong>
+<img src="assets/images/image_019.png" alt="Enabling retarget-io for proj_cm55" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>In the main Library Manager window, observe that <code>retarget-io</code> was removed from <code>proj_cm33_ns</code> and added to <code>proj_cm55</code>, and then click <strong>Update</strong> to add the library to the project
+<img src="assets/images/image_020.png" alt="Updating the project in the Library Manager" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p><strong>Close</strong> the Library Manager after the update completes</p>
+</li>
+<li>
+<p>The <code>proj_cm33_ns</code> project includes <code>retarget_io_init.c</code> and <code>retarget_io_init.h</code> files to initialize the <code>retarget-io</code> library. Reuse these files for the <code>proj_cm55</code> project by cutting and pasting them, or by dragging and dropping them in the <strong>EXPLORER</strong> view
+   <img src="assets/images/lab2_movefiles.gif" alt="retarget_io_init files in proj_cm33_ns" style="width:404px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Open <code>proj_cm33_ns/main.c</code> and modify it to stop using <code>retarget-io</code> and <code>printf</code>.
+<div class="highlight"><pre><span></span><code><span class="cm">/*******************************************************************************</span>
+<span class="cm">* Header Files</span>
+<span class="cm">*******************************************************************************/</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cybsp.h&quot;</span>
+<span class="c1">//#include &quot;retarget_io_init.h&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cy_rslt_t</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CY_RSLT_SUCCESS</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Initialize the device and board peripherals. */</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cybsp_init</span><span class="p">();</span>
+<span class="w">    </span><span class="cm">/* Board initialization failed. Stop program execution. */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CY_RSLT_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">__disable_irq</span><span class="p">();</span>
+<span class="w">        </span><span class="n">CY_ASSERT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Enable global interrupts. */</span>
+<span class="w">    </span><span class="n">__enable_irq</span><span class="p">();</span>
+
+<span class="w">    </span><span class="cm">/* Enable CM55. */</span>
+<span class="w">    </span><span class="n">Cy_SysEnableCM55</span><span class="p">(</span><span class="n">MXCM55</span><span class="p">,</span><span class="w"> </span><span class="n">CM55_APP_BOOT_ADDR</span><span class="p">,</span><span class="w"> </span><span class="n">CM55_BOOT_WAIT_TIME_USEC</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cy_GPIO_Inv</span><span class="p">(</span><span class="n">CYBSP_USER_LED1_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">CYBSP_USER_LED1_PIN</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Cy_SysLib_Delay</span><span class="p">(</span><span class="n">BLINKY_LED_DELAY_MSEC</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Now, initialize <code>retarget-io</code> in <code>proj_cm55/main.c</code>, and use <code>printf</code> to display a message.</p>
+</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="cm">/*******************************************************************************</span>
+<span class="cm">* Header File</span>
+<span class="cm">*******************************************************************************/</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cybsp.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;retarget_io_init.h&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cy_rslt_t</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Initialize the device and board peripherals. */</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cybsp_init</span><span class="p">();</span>
+<span class="w">    </span><span class="cm">/* Board init failed. Stop program execution. */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CY_RSLT_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">handle_app_error</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Enable global interrupts. */</span>
+<span class="w">    </span><span class="n">__enable_irq</span><span class="p">();</span>
+<span class="w">    </span><span class="n">init_retarget_io</span><span class="p">();</span>
+<span class="w">    </span><span class="cm">/* \x1b[2J\x1b[;H - ANSI ESC sequence for clear screen */</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\x1b</span><span class="s">[2J</span><span class="se">\x1b</span><span class="s">[;H&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;********** PSOC Edge MCU: IPC Semaphore Example ********** </span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;CM55 initialization </span><span class="se">\r\n\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* Wait for UART traffic to stop. */</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">Cy_SCB_UART_IsTxComplete</span><span class="p">(</span><span class="n">CYBSP_DEBUG_UART_HW</span><span class="p">)))</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="cm">/* Put the CPU to Deep Sleep. */</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cy_SysPm_CpuEnterDeepSleep</span><span class="p">(</span><span class="n">CY_SYSPM_WAIT_FOR_INTERRUPT</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<ol start="10">
+<li>Build and program the application</li>
+</ol>
+<h3 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h3>
+<p>After the program runs successfully, open the serial terminal and configure the baud rate to 115200-8-N-1. Then press the kit reset button.</p>
+<p>Observe that the CM55 CPU prints the welcome message, while the CM33 CPU is still blinking the LED at approximately 1 Hz.</p>
+<p><img src="assets/images/image_023.png" alt="CM55 welcome message in the serial terminal" style="width:563px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="implement-the-gpio-button-and-print-messages-using-both-cpus">Implement the GPIO button and print messages using both CPUs<a class="headerlink" href="#implement-the-gpio-button-and-print-messages-using-both-cpus" title="Permanent link">&para;</a></h3>
+<p>In the previous section, we moved the retarget-io library to CM55; however, it is still possible for the CM33 to utilize the same UART. 
+In this section, we will send UART messages from both CPUs when an EVK button is pressed.</p>
+<ol>
+<li>
+<p>Open the <strong>Device Configurator</strong> from the <strong>Application</strong> tab of the ModusToolbox&trade; Assistant, or run <code>make device-configurator</code> from a terminal.</p>
+</li>
+<li>
+<p>In the Device Configurator, go to the <strong>Pins</strong> tab</p>
+</li>
+<li>
+<p>[INFO] Observe that the user buttons on the PSOC&trade; Edge EVK are connected to <strong>P8.3</strong> and <strong>P8.7</strong>, as shown in the kit schematic.</p>
+</li>
+</ol>
+<p><img src="assets/images/image_024.png" alt="User button pins in the Device Configurator" style="width:450px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="4">
+<li>
+<p>Rename <strong>Port8[3]</strong> as <strong>TRAINING_BUTTON</strong>. 
+    We will use USER BTN1 to print messages in the application; it is connected to P8.3.
+    <img src="assets/images/image_025.png" alt="Renaming Port 8[3] to TRAINING_BUTTON" style="width:450px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Select <strong>File → Save</strong> or press <strong>Ctrl+S</strong> to save <code>design.modus</code> and regenerate the source files.</p>
+</li>
+<li>
+<p>Open <code>proj_cm33_ns/main.c</code> and modify the code to use the new button alias to print a message to the terminal.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> We use a UART PDL function because the CM33 project does not include <code>retarget-io</code>. The GPIO and UART PDL functions are available in the <a href="https://infineon.github.io/mtb-dsl-pse8xxgp/html/index.html">mtb-dsl-pse8xxgp</a> library.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Cy_GPIO_Read</span><span class="p">(</span><span class="n">TRAINING_BUTTON_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">TRAINING_BUTTON_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cy_SCB_UART_PutString</span><span class="p">(</span><span class="n">CYBSP_DEBUG_UART_HW</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Message sent from CM33 </span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol start="8">
+<li>Now, open proj_cm55/main.c and modify the code to implement a similar functionality</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Observe that we are using printf for CM55 since retarget-io was included.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Cy_GPIO_Read</span><span class="p">(</span><span class="n">TRAINING_BUTTON_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">TRAINING_BUTTON_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Message sent from CM55 </span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol start="9">
+<li>Save the files, rebuild the project and program the device</li>
+</ol>
+<h3 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">&para;</a></h3>
+<p>After the program runs successfully, open the serial terminal and configure the baud rate to 115200-8-N-1. Then press the kit reset button.</p>
+<p>Press USER_BTN1 on the EVK and observe that both devices will attempt to send messages to the terminal; however, the output is incorrect since no semaphores are implemented to synchronize access to UART.</p>
+<p><img src="assets/images/image_026.png" alt="Unsynchronized messages in the serial terminal" style="width:620px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="use-an-ipc-semaphore-to-synchronize-access-to-the-uart">Use an IPC semaphore to synchronize access to the UART<a class="headerlink" href="#use-an-ipc-semaphore-to-synchronize-access-to-the-uart" title="Permanent link">&para;</a></h3>
+<p>We previously observed that both CPUs can access the UART concurrently; however, this can result in problems when both cores attempt to write at the same time without synchronization.</p>
+<p>In this section, we will use IPC semaphores to synchronize access.</p>
+<ol>
+<li>
+<p>Create a shared folder to facilitate sharing parameters between projects.</p>
+</li>
+<li>
+<p>In VS Code's EXPLORER view, right-click the top level of the project and select <strong>New Folder</strong>, then name the folder <strong>shared</strong>.
+<img src="assets/images/image_027.png" alt="Creating the shared folder in VS Code" style="width:447px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Repeat the process to create an <strong>include</strong> folder inside the <strong>shared</strong> folder.</p>
+</li>
+<li>
+<p>Right-click the <strong>shared/include</strong> folder in the <strong>EXPLORER</strong> view, and select <strong>New File</strong>, then name the file <strong>ipc_def.h</strong>.
+   The project should look as follows:
+<img src="assets/images/image_031.png" alt="Project folders and the shared include folder" style="width:294px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Add the following code to the newly created ipc_def.h file
+<div class="highlight"><pre><span></span><code><span class="cp">#ifndef IPC_DEF_H</span>
+<span class="cp">#define IPC_DEF_H</span>
+
+<span class="cm">/* IPC Channel to use */</span>
+<span class="cp">#define IPC_CHANNEL_NUM 8U</span>
+
+<span class="cm">/* Semaphore number to be used in this example. Semaphores 0-15 are reserved</span>
+<span class="cm"> * for system use. */</span>
+<span class="cp">#define MAX_SEMA_NUM 32U</span>
+<span class="cp">#define MY_SEMA_NUM 16U</span>
+
+<span class="cm">/* Delay to allow other core to acquire the semaphore */</span>
+<span class="cp">#define SEMA_DELAY 10U</span>
+
+<span class="cp">#endif </span><span class="cm">/* IPC_DEF_H */</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Add the <strong>shared/include</strong> path to <strong>proj_cm33_ns/Makefile</strong> and <strong>proj_cm55/Makefile</strong>.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The Makefile for both projects needs to be updated since we will access ipc_def.h from both projects.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c"># Like SOURCES, but for include directories. Value should be paths to</span>
+<span class="c"># directories (without a leading -I).</span>
+<span class="nv">INCLUDES</span><span class="o">+=</span>../shared/include
+</code></pre></div>
+<ol start="7">
+<li>Open <strong>proj_cm33_ns/main.c</strong> and add code to initialize the semaphore</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Observe that a region in shared memory is used to declare the semaphore variable since it needs to be accessed by both CPUs.</p>
+</blockquote>
+<p><div class="highlight"><pre><span></span><code><span class="cm">/*******************************************************************************</span>
+<span class="cm">* Header Files</span>
+<span class="cm">*******************************************************************************/</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cybsp.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ipc_def.h&quot;</span>
+
+<span class="cm">/*********************************************************************************</span>
+<span class="cm">* Global variables</span>
+<span class="cm">*********************************************************************************/</span>
+<span class="n">CY_SECTION_SHAREDMEM</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sema_data</span><span class="p">[</span><span class="n">CY_IPC_SEMA_COUNT</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">CY_IPC_SEMA_PER_WORD</span><span class="p">];</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cy_rslt_t</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CY_RSLT_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cy_en_ipcsema_status_t</span><span class="w"> </span><span class="n">ipc_status</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Initialize the device and board peripherals. */</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cybsp_init</span><span class="p">();</span>
+<span class="w">    </span><span class="cm">/* Board initialization failed. Stop program execution. */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CY_RSLT_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">__disable_irq</span><span class="p">();</span>
+<span class="w">        </span><span class="n">CY_ASSERT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Enable global interrupts. */</span>
+<span class="w">    </span><span class="n">__enable_irq</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ipc_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cy_IPC_Sema_Init</span><span class="p">(</span><span class="n">IPC_CHANNEL_NUM</span><span class="p">,</span><span class="w"> </span><span class="n">CY_IPC_SEMA_COUNT</span><span class="p">,</span><span class="w"> </span><span class="n">sema_data</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CY_IPC_SEMA_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ipc_status</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">__disable_irq</span><span class="p">();</span>
+<span class="w">        </span><span class="n">CY_ASSERT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Enable CM55. */</span>
+<span class="w">    </span><span class="n">Cy_SysEnableCM55</span><span class="p">(</span><span class="n">MXCM55</span><span class="p">,</span><span class="w"> </span><span class="n">CM55_APP_BOOT_ADDR</span><span class="p">,</span><span class="w"> </span><span class="n">CM55_BOOT_WAIT_TIME_USEC</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Cy_SysLib_Delay</span><span class="p">(</span><span class="n">SEMA_DELAY</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
+</code></pre></div></p>
+<ol start="8">
+<li>
+<p>Then, add the code to synchronize access to the UART.
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Cy_GPIO_Read</span><span class="p">(</span><span class="n">TRAINING_BUTTON_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">TRAINING_BUTTON_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/* Acquire semaphore */</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Cy_IPC_Sema_Set</span><span class="p">(</span><span class="n">MY_SEMA_NUM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CY_IPC_SEMA_SUCCESS</span><span class="p">)</span>
+<span class="w">            </span><span class="p">;</span>
+<span class="w">        </span><span class="n">Cy_SCB_UART_PutString</span><span class="p">(</span><span class="n">CYBSP_DEBUG_UART_HW</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Message sent from CM33 </span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">Cy_SCB_UART_IsTxComplete</span><span class="p">(</span><span class="n">CYBSP_DEBUG_UART_HW</span><span class="p">)))</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="cm">/* Release semaphore */</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Cy_IPC_Sema_Clear</span><span class="p">(</span><span class="n">MY_SEMA_NUM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CY_IPC_SEMA_SUCCESS</span><span class="p">)</span>
+<span class="w">            </span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Now, open <strong>proj_cm55/main.c</strong> and add code to initialize the semaphore</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Observe that the <strong>sema_data</strong> variable does not need to be declared again.</p>
+</blockquote>
+<p><div class="highlight"><pre><span></span><code><span class="cm">/*******************************************************************************</span>
+<span class="cm">* Header File</span>
+<span class="cm">*******************************************************************************/</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cybsp.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;retarget_io_init.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ipc_def.h&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cy_rslt_t</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cy_en_ipcsema_status_t</span><span class="w"> </span><span class="n">ipc_status</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Initialize the device and board peripherals. */</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cybsp_init</span><span class="p">();</span>
+<span class="w">    </span><span class="cm">/* Board init failed. Stop program execution. */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CY_RSLT_SUCCESS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">handle_app_error</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Enable global interrupts. */</span>
+<span class="w">    </span><span class="n">__enable_irq</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ipc_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cy_IPC_Sema_Init</span><span class="p">(</span><span class="n">IPC_CHANNEL_NUM</span><span class="p">,</span><span class="w"> </span><span class="mi">0UL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ipc_status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CY_IPC_SEMA_SUCCESS</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">handle_app_error</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">init_retarget_io</span><span class="p">();</span>
+<span class="w">    </span><span class="cm">/* \x1b[2J\x1b[;H - ANSI ESC sequence for clear screen */</span>
+</code></pre></div></p>
+<ol start="10">
+<li>Lastly, use the semaphore to synchronize access to UART.
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Cy_GPIO_Read</span><span class="p">(</span><span class="n">TRAINING_BUTTON_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">TRAINING_BUTTON_PIN</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/* Acquire semaphore */</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Cy_IPC_Sema_Set</span><span class="p">(</span><span class="n">MY_SEMA_NUM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CY_IPC_SEMA_SUCCESS</span><span class="p">)</span>
+<span class="w">                </span><span class="p">;</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Message sent from CM55 </span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">Cy_SCB_UART_IsTxComplete</span><span class="p">(</span><span class="n">CYBSP_DEBUG_UART_HW</span><span class="p">)))</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">            </span><span class="cm">/* Release semaphore */</span>
+<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Cy_IPC_Sema_Clear</span><span class="p">(</span><span class="n">MY_SEMA_NUM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CY_IPC_SEMA_SUCCESS</span><span class="p">)</span>
+<span class="w">                </span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div></li>
+<li>Save the files, rebuild the project, and reprogram the device.</li>
+</ol>
+<h3 id="output_3">Output<a class="headerlink" href="#output_3" title="Permanent link">&para;</a></h3>
+<p>After the program runs successfully, open the serial terminal and configure the baud rate to 115200-8-N-1. Then press the kit reset button.</p>
+<p>Press USER_BTN1 on the EVK and observe that both devices will send messages to the terminal and now that IPC semaphores are used to synchronize access, both cores can print the complete message successfully.
+<img src="assets/images/lab2_output.gif" alt="Synchronized messages in the serial terminal" style="width:620px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<h3 id="conclusion_1">Conclusion<a class="headerlink" href="#conclusion_1" title="Permanent link">&para;</a></h3>
+<p>We successfully learned how to use the Library Manager to add and remove libraries on both CPUs, implemented code to access a shared resource, and synchronized that access with an IPC semaphore.</p>
+<p>This demonstrates IPC’s effectiveness for coordinating access between processors, and it can also be used to exchange messages between them.</p>
+<p><a id="appendix-a"></a></p>
+<h2 id="appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm">Appendix A: Creating a PSOC&trade; Edge application in ModusToolbox&trade;<a class="headerlink" href="#appendix-a-creating-a-psoctm-edge-application-in-modustoolboxtm" title="Permanent link">&para;</a></h2>
+<p>The following steps show how to create a new project for PSOC&trade; Edge in ModusToolbox&trade;, using either Visual Studio Code (VS Code) or the command-line interface (CLI).</p>
+<h3 id="creating-an-application-using-vs-code">Creating an application using VS Code<a class="headerlink" href="#creating-an-application-using-vs-code" title="Permanent link">&para;</a></h3>
+<p>This appendix shows a quick workflow to create and open a new PSOC&trade; Edge "Hello World" application using ModusToolbox&trade; and Visual Studio Code.</p>
+<ol>
+<li>Open <strong>ModusToolbox&trade; Dashboard</strong>. Select <strong>Microsoft Visual Studio Code</strong> as the target IDE, then launch <strong>Project Creator</strong>.
+    If you have not installed ModusToolbox&trade; or Visual Studio Code, see the <a href="#required-development-tools-and-prerequisites">Required development tools</a> section.</li>
+</ol>
+<p><img src="assets/images/MTB_Dashboard.png" alt="ModusToolbox&trade; Dashboard" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<ol start="2">
+<li>
+<p>Choose the PSOC&trade; Edge BSP that matches your kit. This training will be using the <strong>KIT_PSE84_EVAL_EPC2</strong>. Then, click Next.
+<img src="assets/images/image_a1001.png" alt="Project Creator start screen" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>Select a <strong>path</strong> for your project, make sure the <strong>target IDE</strong> is Microsoft Visual Studio Code, and  then select the <strong>"Hello World"</strong> project under <strong>"Getting Started"</strong> section.
+   Optionally, rename the project desired and click on <strong>Create</strong>.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Windows has a 260-character path length limit. A long workspace path and/or a long project name may cause build issues when creating some applications.
+<img src="assets/images/image_a1002.png" alt="Project Creator target and template selection" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</blockquote>
+<ol start="4">
+<li>
+<p>After project generation completes, open the generated workspace in Visual Studio Code by opening the .code-workspace file created in the project folder.
+<img src="assets/images/VSC_open1.png" alt="Open generated project in VS Code" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</li>
+<li>
+<p>The project will be imported and you should be able to see all the files in Visual Studio Code, and the <strong>ModusToolbox&trade; for VS Code extension</strong> can be used to build and program the project.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The <strong>ModusToolbox&trade; for VS Code extension</strong> might show some warnings. Click the corresponding buttons to fix the configuration issues.
+<img src="assets/images/VSC_open2.png" alt="Verify project in VS Code" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+</blockquote>
+<h3 id="creating-an-application-using-the-cli">Creating an application using the CLI<a class="headerlink" href="#creating-an-application-using-the-cli" title="Permanent link">&para;</a></h3>
+<p>ModusToolbox&trade; also includes a <code>project-creator-cli</code> tool so you can create applications without a GUI, or automate project creation in scripts.</p>
+<blockquote>
+<p><strong>Note:</strong> On Windows, run CLI commands from the <strong>modus-shell</strong> (Cygwin) terminal included with the ModusToolbox&trade; installation, instead of a standard Windows command-line application. This shell provides access to all ModusToolbox&trade; tools. On Linux and macOS, you can use any terminal application.</p>
+</blockquote>
+<ol>
+<li>
+<p>Open a modus-shell (Windows) or terminal (Linux/macOS) window, and navigate to the folder where you want to create the application</p>
+</li>
+<li>
+<p>Run the following command to list the available code examples for the <strong>KIT_PSE84_EVAL_EPC2</strong> BSP</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>project-creator-cli<span class="w"> </span>--list-apps<span class="w"> </span>KIT_PSE84_EVAL_EPC2
+</code></pre></div>
+<ol start="3">
+<li>Run the following command to create the <strong>PSOC&trade; Edge Hello World</strong> application</li>
+</ol>
+<div class="highlight"><pre><span></span><code>project-creator-cli<span class="w"> </span>--board-id<span class="w"> </span>KIT_PSE84_EVAL_EPC2<span class="w"> </span>--app-id<span class="w"> </span>mtb-example-psoc-edge-hello-world<span class="w"> </span>--user-app-name<span class="w"> </span>PSOC_Edge_Hello_World
+</code></pre></div>
+<ol start="4">
+<li>You can build, program, and open other ModusToolbox&trade; tools directly from the modus-shell or terminal, for example <code>make build</code>, <code>make program</code>, <code>make device-configurator</code>, <code>make library-manager</code>, etc.
+    Visit the <a href="https://www.infineon.com/modustoolboxuserguide">ModusToolbox&trade; user guide</a> for more information.</li>
+</ol>
+<h2 id="appendix-b-kit_pse84_eval-details">Appendix B: KIT_PSE84_EVAL details<a class="headerlink" href="#appendix-b-kit_pse84_eval-details" title="Permanent link">&para;</a></h2>
+<p><img src="assets/images/image_039.png" alt="KIT_PSE84_EVAL board overview" style="width:760px; max-width:100%; height:auto; display:block; margin:0 auto;" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">No.</th>
+<th>Item</th>
+<th style="text-align: right;">No.</th>
+<th>Item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Baseboard power LED (D1)</td>
+<td style="text-align: right;">26</td>
+<td>3-axis magnetometer (U4)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>KitProg3 program/debug USB-C connector (J8)</td>
+<td style="text-align: right;">27</td>
+<td>Raspberry Pi-compatible display capacitive touch connector (J41)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>PSOC&trade; 5LP-based KitProg3 programmer and debugger (CY8C5868LTI-LP039, U2)</td>
+<td style="text-align: right;">28</td>
+<td>Linear potentiometer (R34)</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Reset button (SW1)</td>
+<td style="text-align: right;">29</td>
+<td>Analog microphones (IM73A135V01XTSA1, U36 and U37)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>KitProg3 status LED (D2)</td>
+<td style="text-align: right;">30</td>
+<td>User LEDs (D3, D4, D5)</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>PSOC&trade; Edge E84 MCU ETM/JTAG debug and trace header (J15)</td>
+<td style="text-align: right;">31</td>
+<td>Thermistor (TH1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>PSOC&trade; Edge E84 MCU 10-pin SWD/JTAG program and debug header (J16)</td>
+<td style="text-align: right;">32</td>
+<td>CAPSENSE&trade; buttons and slider (CSB1, CSB2, CSS1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Alternative serial interface configuration headers (J20, J21)</td>
+<td style="text-align: right;">33</td>
+<td>BOOT configuration switch (SW6)</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>PSOC&trade; Edge E84 MCU USB host Type-A connector (J27)</td>
+<td style="text-align: right;">34</td>
+<td>Proximity sense connector (J19)</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>USB-C power delivery (PD) fault LED (D6)</td>
+<td style="text-align: right;">35</td>
+<td>I/O headers compatible with Arduino UNO R3 (J2, J3, J4)</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Custom display capacitive touch panel connector (J37)**</td>
+<td style="text-align: right;">36</td>
+<td>Alternative serial interface I/O header (J14)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>PSOC&trade; Edge E84 MCU USB-C connector (J30)</td>
+<td style="text-align: right;">37</td>
+<td>Power header compatible with Arduino UNO R3 (J1)</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>External power supply VIN connector (J31)</td>
+<td style="text-align: right;">38</td>
+<td>PSOC&trade; Edge E84 MCU expansion I/O headers (J6, J7, J40)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>PSOC&trade; Edge E84 MCU user buttons (SW2, SW4)</td>
+<td style="text-align: right;">39</td>
+<td>MicroSD card holder (J35)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>M.2 (B-key) memory interface connector (J29)</td>
+<td style="text-align: right;">40</td>
+<td>Infineon's Shield2Go interface headers (J10, J12)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>128 Mbit Octal-SPI HYPERRAM&trade; (S70KS1283GABHI020, U12)***</td>
+<td style="text-align: right;">41</td>
+<td>Analog microphones (IM73A135V01XTSA1, U36 and U37)**</td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>Processor System on module (SoM) 260-pin SODIMM connector (J28)</td>
+<td style="text-align: right;">42</td>
+<td>mikroBUS compatible headers by Mikroelektronika (J9, J17)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td>CYW55513 tri-band (Wi-Fi &amp; Bluetooth®) combo radio (U3) section</td>
+<td style="text-align: right;">43</td>
+<td>Extended I2S header (J11)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">19</td>
+<td>Processor System on module (SoM) power LED (D3)</td>
+<td style="text-align: right;">44</td>
+<td>6-axis accelerometer and gyroscope IMU (U5)</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>1-Gb Octal-SPI NOR flash (S28HS01GTGZBH1030, U10)***</td>
+<td style="text-align: right;">45</td>
+<td>M.2 (E-key) radio interface connector (J13)</td>
+</tr>
+<tr>
+<td style="text-align: right;">21</td>
+<td>128-Mb Quad-SPI NOR flash (S25FS128SAGMFB100, U11)</td>
+<td style="text-align: right;">46</td>
+<td>PSOC&trade; Edge E84 MCU power selection/monitoring headers (J18, J22, J23, J24, J25, J26)</td>
+</tr>
+<tr>
+<td style="text-align: right;">22</td>
+<td>MIPI-DSI custom display connector (J38)**</td>
+<td style="text-align: right;">47</td>
+<td>Headphone connector (J34)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">23</td>
+<td>PSOC&trade; Edge E84 MCU (PSE846GPS2DBZC4A, U1)</td>
+<td style="text-align: right;">48</td>
+<td>Speaker (ACC6)</td>
+</tr>
+<tr>
+<td style="text-align: right;">24</td>
+<td>PSOC&trade; 4000T CAPSENSE&trade; Co-processor (U9)***</td>
+<td style="text-align: right;">49</td>
+<td>RJ45 Ethernet MagJack connector (J5)*</td>
+</tr>
+<tr>
+<td style="text-align: right;">25</td>
+<td>Raspberry Pi-compatible MIPI-DSI display connector (J39)**</td>
+<td style="text-align: right;">50</td>
+<td>KitProg3 programming mode selection button (SW3)</td>
+</tr>
+</tbody>
+</table>
+<p>*Footprint only, not populated on the board</p>
+<p>**Component at the bottom side of the Baseboard</p>
+<p>***Component at the bottom side of the SoM</p>
+<h2 id="revision-history">Revision history<a class="headerlink" href="#revision-history" title="Permanent link">&para;</a></h2>
+<table class="no-center-table">
+    <thead>
+        <tr>
+            <th>Document revision</th>
+            <th>Date</th>
+            <th>Description of changes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>*B</td>
+            <td>2026-05-04</td>
+            <td>Updated tool versions; migrated instructions from Eclipse IDE to Visual Studio Code; added CLI equivalent instructions.</td>
+        </tr>
+        <tr>
+            <td>*A</td>
+            <td>2026-05-04</td>
+            <td>Updated template.</td>
+        </tr>
+        <tr>
+            <td>**</td>
+            <td>2026-03-15</td>
+            <td>Initial release.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h3>
+<p>All referenced product or service names and trademarks are the property of their respective owners.</p>
+<p>The Bluetooth® word mark and logos are registered trademarks owned by Bluetooth SIG, Inc., and any use of such marks by Infineon is under license.</p>
+<p>PSOC&trade;, formerly known as PSoC&trade;, is a trademark of Infineon Technologies. Any references to PSoC&trade; in this document or others shall be deemed to refer to PSOC&trade;.</p>
+<hr />
+<p>© Cypress Semiconductor Corporation, 2023-2026. This document is the property of Cypress Semiconductor Corporation, an Infineon Technologies company, and its affiliates ("Cypress").  This document, including any software or firmware included or referenced in this document ("Software"), is owned by Cypress under the intellectual property laws and treaties of the United States and other countries worldwide.  Cypress reserves all rights under such laws and treaties and does not, except as specifically stated in this paragraph, grant any license under its patents, copyrights, trademarks, or other intellectual property rights.  If the Software is not accompanied by a license agreement and you do not otherwise have a written agreement with Cypress governing the use of the Software, then Cypress hereby grants you a personal, non-exclusive, nontransferable license (without the right to sublicense) (1) under its copyright rights in the Software (a) for Software provided in source code form, to modify and reproduce the Software solely for use with Cypress hardware products, only internally within your organization, and (b) to distribute the Software in binary code form externally to end users (either directly or indirectly through resellers and distributors), solely for use on Cypress hardware product units, and (2) under those claims of Cypress's patents that are infringed by the Software (as provided by Cypress, unmodified) to make, use, distribute, and import the Software solely for use with Cypress hardware products.  Any other use, reproduction, modification, translation, or compilation of the Software is prohibited.
+<br>
+TO THE EXTENT PERMITTED BY APPLICABLE LAW, CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS DOCUMENT OR ANY SOFTWARE OR ACCOMPANYING HARDWARE, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  No computing device can be absolutely secure.  Therefore, despite security measures implemented in Cypress hardware or software products, Cypress shall have no liability arising out of any security breach, such as unauthorized access to or use of a Cypress product. CYPRESS DOES NOT REPRESENT, WARRANT, OR GUARANTEE THAT CYPRESS PRODUCTS, OR SYSTEMS CREATED USING CYPRESS PRODUCTS, WILL BE FREE FROM CORRUPTION, ATTACK, VIRUSES, INTERFERENCE, HACKING, DATA LOSS OR THEFT, OR OTHER SECURITY INTRUSION (collectively, "Security Breach").  Cypress disclaims any liability relating to any Security Breach, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any Security Breach.  In addition, the products described in these materials may contain design defects or errors known as errata which may cause the product to deviate from published specifications. To the extent permitted by applicable law, Cypress reserves the right to make changes to this document without further notice. Cypress does not assume any liability arising out of the application or use of any product or circuit described in this document. Any information provided in this document, including any sample design information or programming code, is provided only for reference purposes.  It is the responsibility of the user of this document to properly design, program, and test the functionality and safety of any application made of this information and any resulting product.  "High-Risk Device" means any device or system whose failure could cause personal injury, death, or property damage.  Examples of High-Risk Devices are weapons, nuclear installations, surgical implants, and other medical devices.  "Critical Component" means any component of a High-Risk Device whose failure to perform can be reasonably expected to cause, directly or indirectly, the failure of the High-Risk Device, or to affect its safety or effectiveness.  Cypress is not liable, in whole or in part, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any use of a Cypress product as a Critical Component in a High-Risk Device. You shall indemnify and hold Cypress, including its affiliates, and its directors, officers, employees, agents, distributors, and assigns harmless from and against all claims, costs, damages, and expenses, arising out of any claim, including claims for product liability, personal injury or death, or property damage arising from any use of a Cypress product as a Critical Component in a High-Risk Device. Cypress products are not intended or authorized for use as a Critical Component in any High-Risk Device except to the limited extent that (i) Cypress's published data sheet for the product explicitly states Cypress has qualified the product for use in a specific High-Risk Device, or (ii) Cypress has given you advance written authorization to use the product as a Critical Component in the specific High-Risk Device and you have signed a separate indemnification agreement.
+<br>
+Cypress, the Cypress logo, and combinations thereof, ModusToolbox, PSoC, CAPSENSE, EZ-USB, F-RAM, and TRAVEO are trademarks or registered trademarks of Cypress or a subsidiary of Cypress in the United States or in other countries. For a more complete list of Cypress trademarks, visit www.infineon.com. Other names and brands may be claimed as property of their respective owners.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.footer", "navigation.expand", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

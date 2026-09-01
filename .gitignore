@@ -9,3 +9,5 @@
 # Microsoft PowerPoint temporary files
 ~$*.pptx
 *.~pptx
+
+.obsidian
